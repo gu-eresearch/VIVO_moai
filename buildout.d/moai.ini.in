@@ -25,3 +25,4 @@ port = ${ports:moai}
 jenaroot = ${jena-download:location}
 jenaconfig = ${jena-config:output}
 sdb_jdbc = ${mysqljdbc-download:location}/mysql-connector-java-5.1.20-bin.jar
+harvesteruri = http://research-hub-dev.griffith.edu.au/individual/ANDS_ORCA
