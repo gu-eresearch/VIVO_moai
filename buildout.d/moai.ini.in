@@ -21,3 +21,8 @@ use = egg:PasteScript#wsgiutils
 host = ${hosts:moai}
 port = ${ports:moai}
 
+[rh]
+jenaroot = ${jena-download:location}
+jenaconfig = ${jena-config:output}
+sdb_jdbc = ${mysqljdbc-download:location}/mysql-connector-java-5.1.20-bin.jar
+

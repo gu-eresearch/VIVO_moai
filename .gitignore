@@ -6,3 +6,5 @@ develop-eggs
 src/*
 parts/
 etc/
+moai.log
+var/

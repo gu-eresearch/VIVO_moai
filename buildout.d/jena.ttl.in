@@ -1,0 +1,30 @@
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ja:       <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix sdb:      <http://jena.hpl.hp.com/2007/sdb#> .
+@prefix data:     <http://ingest.griffith.edu.au/> .
+
+# tell the system that sdb:DataSetStore is an implementation of ja:RDFDataSet (else ARQ does not find it).
+[] ja:loadClass "com.hp.hpl.jena.sdb.SDB" .
+sdb:DatasetStore rdfs:subClassOf ja:RDFDataset .
+
+# Models:
+# <#namedGraph> rdf:type sdb:Model ;
+#     sdb:namedGraph <graphname> ;
+#     sdb:dataset <#dataset> .
+
+<#dataset> rdf:type sdb:DatasetStore ;
+     sdb:store          <#myStore> .
+
+<#myStore> rdf:type sdb:Store ;
+     sdb:layout         "layout2/hash" ;
+     sdb:connection     <#conndev> ;
+     .
+
+<#conndev> rdf:type sdb:SDBConnection ;
+     sdb:sdbType        "mysql" ;
+     sdb:driver         "com.mysql.jdbc.Driver" ;
+     sdb:jdbcURL        "jdbc:mysql://${jena:dbhost}/${jena:dbname}?characterEncoding=UTF-8&rewriteBatchedStatements=true" ;
+     sdb:sdbUser        "${jena:dbuser}" ;
+     sdb:sdbPassword    "${jena:password}" ;
+     .
