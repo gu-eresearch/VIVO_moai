@@ -1,0 +1,23 @@
+[composite:main]
+use = egg:Paste#urlmap
+/oai = moai_ausnc
+
+[app:moai_ausnc]
+use = egg:moai
+name = AusNC Feed
+url = http://${hosts:moai}:${ports:moai}/oai
+admin_email =  ausnccontact@griffith.edu.au
+formats = oai_dc rif
+disallow_sets = private
+# dburi: sqlite://<nohost>/<file path>
+#        sqlite://<nohost>//<absfile path>
+database = sqlite:///${buildout:directory}/var/moai.ausnc.db
+provider = moai_rh:rh
+content = moai_rh
+forcedflush = 10000
+
+[server:main]
+use = egg:PasteScript#wsgiutils
+host = ${hosts:moai}
+port = ${ports:moai}
+

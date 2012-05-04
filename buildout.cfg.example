@@ -1,0 +1,41 @@
+[buildout]
+extensions += mr.developer
+
+parts =
+    lxml
+    moai-config
+    moai
+
+versions = versions
+
+[versions]
+lxml=2.3.3
+
+[sources]
+gu.rh.moai = git gitolite@subsoft.rcs.griffith.edu.au:gu.rh.moai branch=master
+moai = hg https://bitbucket.org/gweis/moai
+
+
+[lxml]
+recipe = z3c.recipe.staticlxml
+egg = lxml
+
+
+[moai-config]
+recipe = collective.recipe.template
+input = ${buildout:directory}/buildout.d/moai.ini.in
+output = ${buildout:directory}/etc/moai.ini
+
+[moai]
+recipe = zc.recipe.egg
+eggs =
+    MOAI
+    pasteScript
+    gu.rh.moai
+
+[hosts]
+moai=localhost
+
+[ports]
+moai = 9090
+
