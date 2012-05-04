@@ -5,8 +5,15 @@ parts =
     lxml
     moai-config
     moai
+    jena-download
+    jena-config
 
 versions = versions
+
+auto-checkout =
+    moai
+    gu.rh.moai
+
 
 [versions]
 lxml=2.3.3
@@ -33,9 +40,30 @@ eggs =
     pasteScript
     gu.rh.moai
 
+[jena-config]
+recipe = collective.recipe.template
+input = ${buildout:directory}/buildout.d/jena.ttl.in
+output = ${buildout:directory}/etc/jena.ttl
+
 [hosts]
 moai=localhost
 
 [ports]
 moai = 9090
 
+[jena]
+dbhost=thor.itc.griffith.edu.au
+dbname=rhdbdev
+dbuser=rhdb_dev
+password=rTST2011
+
+[jena-download]
+recipe = hexagonit.recipe.download
+strip-top-level-dir = true
+url = http://downloads.sourceforge.net/project/jena/SDB/SDB-1.3.4/sdb-1.3.4.zip
+#http://www.apache.org/dist/incubator/jena/apache-jena-2.7.0-incubating/apache-jena-2.7.0-incubating.tar.gz
+
+[mysqljdbc-download]
+recipe = hexagonit.recipe.download
+strip-top-level-dir = true
+url = http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.20.zip/from/http://mysql.inspire.net.nz/
