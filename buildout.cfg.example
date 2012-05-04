@@ -1,69 +1,10 @@
 [buildout]
-extensions += mr.developer
 
-parts =
-    lxml
-    moai-config
-    moai
-    jena-download
-    jena-config
-
-versions = versions
-
-auto-checkout =
-    moai
-    gu.rh.moai
-
-
-[versions]
-lxml=2.3.3
-
-[sources]
-gu.rh.moai = git gitolite@subsoft.rcs.griffith.edu.au:gu.rh.moai branch=master
-moai = hg https://bitbucket.org/gweis/moai
-
-
-[lxml]
-recipe = z3c.recipe.staticlxml
-egg = lxml
-
-
-[moai-config]
-recipe = collective.recipe.template
-input = ${buildout:directory}/buildout.d/moai.ini.in
-output = ${buildout:directory}/etc/moai.ini
-
-[moai]
-recipe = zc.recipe.egg
-eggs =
-    MOAI
-    pasteScript
-    gu.rh.moai
-
-[jena-config]
-recipe = collective.recipe.template
-input = ${buildout:directory}/buildout.d/jena.ttl.in
-output = ${buildout:directory}/etc/jena.ttl
-
-[hosts]
-moai=localhost
-
-[ports]
-moai = 9090
+extends =
+    development.cfg
 
 [jena]
-dbhost=thor.itc.griffith.edu.au
-dbname=rhdbdev
-dbuser=rhdb_dev
-password=rTST2011
-
-[jena-download]
-recipe = hexagonit.recipe.download
-strip-top-level-dir = true
-url = http://downloads.sourceforge.net/project/jena/SDB/SDB-1.3.4/sdb-1.3.4.zip
-#http://www.apache.org/dist/incubator/jena/apache-jena-2.7.0-incubating/apache-jena-2.7.0-incubating.tar.gz
-
-[mysqljdbc-download]
-recipe = hexagonit.recipe.download
-strip-top-level-dir = true
-url = http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.20.zip/from/http://mysql.inspire.net.nz/
+dbhost=myhost
+dbname=mydb
+dbuser=smydbuser
+password=mydbpass
