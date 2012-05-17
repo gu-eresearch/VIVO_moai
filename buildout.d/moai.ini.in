@@ -1,12 +1,12 @@
 [composite:main]
 use = egg:Paste#urlmap
-/oai = moai_ausnc
+/oai = moai_rh
 
-[app:moai_ausnc]
+[app:moai_rh]
 use = egg:moai
 name = AusNC Feed
 url = http://${hosts:moai}:${ports:moai}/oai
-admin_email =  ausnccontact@griffith.edu.au
+admin_email =  eresearch@griffith.edu.au
 formats = oai_dc rif
 disallow_sets = private
 # dburi: sqlite://<nohost>/<file path>
