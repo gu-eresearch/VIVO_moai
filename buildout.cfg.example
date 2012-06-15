@@ -1,10 +1,11 @@
+# either use this or run buildout with option -c
 [buildout]
 
 extends =
-    development.cfg
+    dev.cfg
 
 [jena]
-dbhost=myhost
-dbname=mydb
-dbuser=smydbuser
-password=mydbpass
+dbhost=mysql.host
+dbname=mysqldb
+dbuser=mysqluser
+password=mysqlpass
