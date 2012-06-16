@@ -5,27 +5,27 @@ use = egg:Paste#urlmap
 [app:moai_rh]
 use = egg:moai
 name = AusNC Feed
-url = http://${hosts:moai}:${ports:moai}/oai
+url = http://${moai-settings:host}:${moai-settings:port}/oai
 admin_email =  eresearch@griffith.edu.au
 formats = oai_dc rif
 disallow_sets = private
 # dburi: sqlite://<nohost>/<file path>
 #        sqlite://<nohost>//<absfile path>
-database = sqlite:///${buildout:directory}/var/moai.ausnc.db
+database = ${moai-settings:moaidb}
 provider = moai_rh:rh
 content = moai_rh
 forcedflush = 10000
 
 [server:main]
 use = egg:PasteScript#wsgiutils
-host = ${hosts:moai}
-port = ${ports:moai}
+host = ${moai-settings:host}
+port = ${moai-settings:port}
 
 [rh]
 jenaroot = ${jena-download:location}
 jenaconfig = ${jena-config:output}
 sdb_jdbc = ${mysqljdbc-download:location}/mysql-connector-java-5.1.20-bin.jar
-harvesteruri = http://research-hub-dev.griffith.edu.au/individual/ANDS_ORCA
+harvesteruri = ${moai-settings:harvesteruri}
 
-originatingsource = http://griffith.edu.au
-groupdescription = Griffith University
+originatingsource = ${moai-settings:originatingsource}
+groupdescription = ${moai-settings:groupdescription}

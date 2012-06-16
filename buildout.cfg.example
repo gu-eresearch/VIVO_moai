@@ -19,3 +19,7 @@ url = http://downloads.sourceforge.net/project/jena/SDB/SDB-1.3.4/sdb-1.3.4.zip
 
 [mysqljdbc-download]
 url = http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.20.zip/from/http://mysql.inspire.net.nz/
+
+[moai-settings]
+harvesteruri = http://research-hub-dev.griffith.edu.au/individual/ANDS_ORCA
+moaidb = sqlite:///${buildout:directory}/var/moai.ausnc.db
