@@ -1,4 +1,6 @@
 buildout.cfg
+prod.cfg
+test.cfg
 .installed.cfg
 .mr.developer.cfg
 bin/
@@ -8,3 +10,6 @@ parts/
 etc/
 moai.log
 var/
+sources/*
+downloads
+eggs
