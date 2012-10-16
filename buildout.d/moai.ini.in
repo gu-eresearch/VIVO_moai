@@ -4,7 +4,7 @@ use = egg:Paste#urlmap
 
 [app:moai_rh]
 use = egg:moai
-name = AusNC Feed
+name = Research Hub Feed
 url = http://${moai-settings:host}:${moai-settings:port}/oai
 admin_email =  eresearch@griffith.edu.au
 formats = oai_dc rif
