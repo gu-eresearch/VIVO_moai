@@ -1,4 +1,3 @@
-
 Setup locally:
 ==============
 
@@ -37,7 +36,7 @@ run:
 # ./bin/buildout -o -N -c test.cfg
 
 
-Setup on Test environment:
+Setup on Prod environment:
 =========================
 
 run:
